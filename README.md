@@ -183,7 +183,7 @@ spec:
 
 ## Step 5 Create PersistentVolumeClaims and PersistentVolumes (wordpress)
 
-As with the mysql resources, I used the PV and PVC objects to persist the mysql data with ReadWriteOnce access
+As with the wordpress resources, I used the PV and PVC objects to persist the wordpress data with ReadWriteOnce access
 
 - wordpressPV.yml
 
