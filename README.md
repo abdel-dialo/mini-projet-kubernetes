@@ -8,17 +8,17 @@
 
 ## Objectives
 
- - Create a mysql deployment with a single replica 
+ - Create a **mysql deployment** with a single replica 
 
- - Create an IP cluster service to expose your mysql 
+ - Create an **IP cluster service** to expose your mysql 
    pods 
 
- - Create a wordpress deployment with a single replica  and the right environment variables to connect to the mysql database 
+ - Create a **wordpress deployment** with a single replica and the right environment variables to connect to the mysql database 
  
- - Create a nodeport service to expose the   
+ - Create a **nodeport service** to expose the   
    wordpress frontend 
 
- - Create PersistentVolumeClaims and PersistentVolumes for the mysql data persistent storage and the wordpress data persistent storage.
+ - Create **PersistentVolumeClaims** and **PersistentVolumes** for the mysql data persistent storage and the wordpress data persistent storage.
  
 
 ## Step 1  - Namespace
@@ -190,20 +190,22 @@ As with the wordpress resources, I used the PV and PVC objects to persist the wo
 
 ```
 apiVersion: v1
-kind: PersistentVolumeClaim
+kind: PersistentVolume
 metadata:
   name: wordpress-persistent-storage
   labels:
     app: wordpress
+    tier: frontend
+    type: local
   namespace: staging
 spec:
   storageClassName: manual
+  capacity:
+    storage: 2Gi
   accessModes:
     - ReadWriteOnce
-  resources:
-    requests:
-      storage: 1Gi
-
+  hostPath:
+    path: "/data-wordpress-pv" 
 ```
  - wordpressPVC.yml
 
