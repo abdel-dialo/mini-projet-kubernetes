@@ -291,8 +291,8 @@ spec:
         - name: WORDPRESS_DB_PASSWORD
           valueFrom:
             secretKeyRef:
-              name: mysql-pass
-              key: password
+              name: app-wordpress-pass
+              key: wp_password
         - name: WORDPRESS_DB_USER
           value: wordpress
         ports:
