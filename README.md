@@ -134,6 +134,7 @@ spec:
 
 ```
 ---
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -161,8 +162,8 @@ spec:
         - name: MYSQL_ROOT_PASSWORD
           valueFrom:
             secretKeyRef:
-              name: mysql-pass
-              key: password
+              name: app-wordpress-pass
+              key: mysql_root_password
         - name: MYSQL_DATABASE
           value: wordpress
         - name: MYSQL_USER
@@ -170,8 +171,8 @@ spec:
         - name: MYSQL_PASSWORD
           valueFrom:
             secretKeyRef:
-              name: mysql-pass
-              key: password
+              name: app-wordpress-pass
+              key: mysql_password
         ports:
         - containerPort: 3306
           name: mysql
